@@ -7,3 +7,11 @@ fakeRequestCB = ((url,success,failure) => {
             success(`Here is your fake Data! from ${url}`);
     },delay)
 });
+
+
+fakeRequestCB('books.com',
+    function(response){ 
+        console.log('It worked' ,response )
+    }, function (error){
+        console.log( 'Failed to get data: ', error);
+    });
