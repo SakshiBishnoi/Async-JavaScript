@@ -49,7 +49,8 @@ fakeRequestPromise('books.com/good/coffee/page1')
     .then((data) => {
         console.log('It worked (Page 1)\n', data);
         return fakeRequestPromise('books.com/good/coffee/page2')
-    })
+    }) //When a Promise is successfully resolved, the value returned from its .then method 
+    //becomes the input for the next .then method in the chain.
     .then((data) => {
         console.log('It worked (Page 2)\n', data);
         return fakeRequestPromise('books.com/good/coffee/page3')
@@ -60,3 +61,6 @@ fakeRequestPromise('books.com/good/coffee/page1')
     .catch((error) => {
         console.log("It didn't work", error);
     })
+
+    //By returning a new Promise (the result of fakeRequestPromise for the next page) within a .then method,
+    //you ensure that the subsequent request doesn't start until the previous one has completed successfully.
