@@ -22,3 +22,23 @@
 //     }, 1000);
 
 
+const colorChange = (color, delay, doNext) => {
+    setTimeout( () => { 
+        document.body.style.backgroundColor = color;
+        doNext && doNext();
+        }, delay);
+};
+
+colorChange( 'PowderBlue', 1000, () => {
+    colorChange( 'Lavender', 1000, () => {
+        colorChange( 'LavenderBlush', 1000, () => {
+            colorChange( 'LightCyan', 1000, () => {
+                colorChange( 'Thistle', 1000, () => {
+                    colorChange( 'PapayaWhip', 1000, () => {
+
+                    });
+                });
+            });
+        });
+    });
+});
