@@ -45,4 +45,18 @@ fakeRequestPromise('books.com/good/coffee/page1')
     })
 
 
-    
+fakeRequestPromise('books.com/good/coffee/page1')
+    .then((data) => {
+        console.log('It worked (Page 1)\n', data);
+        return fakeRequestPromise('books.com/good/coffee/page2')
+    })
+    .then((data) => {
+        console.log('It worked (Page 2)\n', data);
+        return fakeRequestPromise('books.com/good/coffee/page3')
+    })
+    .then((data) => {
+        console.log('It worked (Page 3)\n', data);
+    })
+    .catch((error) => {
+        console.log("It didn't work", error);
+    })
