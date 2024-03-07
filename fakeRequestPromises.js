@@ -3,9 +3,9 @@ const fakeRequestPromise = (url) => {
         const delay = Math.floor(Math.random() * 4500) + 500;
         setTimeout(() => {
             if(delay > 4000) {
-                failure( "Error: Request took too long!" );
+                reject( "Error: Request took too long!" );
             } else{
-                success(`Here is your fake Data! from ${url}`);
+                resolve(`Here is your fake Data! from ${url}`);
             }   
         },delay)
     })
@@ -19,27 +19,30 @@ const fakeRequestPromise = (url) => {
 //     console.error("It didn't work");
 //  })
 
-fakeRequestPromise('books.com/good/coffee/page1');
-    request.then(() => {
+fakeRequestPromise('books.com/good/coffee/page1')
+    .then(() => {
         console.log("It worked for page 1");
-        fakeRequestPromise('books.com/good/coffee/page2');
-        request.then(() => {
+        fakeRequestPromise('books.com/good/coffee/page2')
+        .then(() => {
             console.log("It worked for page 2");
-            fakeRequestPromise('books.com/good/coffee/page1');
-            request.then(() => {
+            fakeRequestPromise('books.com/good/coffee/page1')
+            .then(() => {
                 console.log("It worked for page 3");
-                fakeRequestPromise('books.com/good/coffee/page1');
-                request.then(() => {
+                fakeRequestPromise('books.com/good/coffee/page1')
+                .then(() => {
                     console.log("It worked for page 4");
                 }).catch(() => {
-                    console.error("It didn't work for page 4");
+                    console.log("It didn't work for page 4");
                 })
             }).catch(() => {
-                console.error("It didn't work for page 3");
+                console.log("It didn't work for page 3");
             })
         }).catch(() => {
-            console.error("It didn't work for page 2");
+            console.log("It didn't work for page 2");
         })
     }).catch(() => {
-        console.error("It didn't work page 1");
+        console.log("It didn't work page 1");
     })
+
+
+    
