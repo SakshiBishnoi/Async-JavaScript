@@ -1,4 +1,5 @@
 const form = document.querySelector('#searchForm');
+const input = document.querySelector('input');
 
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -20,3 +21,12 @@ form.addEventListener("submit", async function (e) {
         }  
     }
 };
+
+const deleteImages =  () => {
+    const images = document.querySelectorAll('img');
+    for(let image of images){
+        image.remove();
+    }
+}
+ 
+input.addEventListener('keydown', deleteImages)
